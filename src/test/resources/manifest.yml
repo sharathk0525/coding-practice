@@ -1,0 +1,35 @@
+---
+applications:
+- name: wf-task-detail-app
+  buildpacks: 
+  - nodejs_buildpack_v1_6_51
+  memory: 256M
+  disk_quota: 512M
+  command: node server.js
+  health-check-type: http
+  health-check-http-endpoint: /health
+  env:
+    APPVERSION: 1.0.0
+    OPTIMIZE_MEMORY: true
+    NODE_ENV: production
+    APPD_APP_NAME: SimplifiedWorkflow
+    APPD_TIER_NAME: wf-task-detail-app
+    ui_search_api_v1_uri: https://wf-search-api-dev.ext.px-npe02b.cf.t-mobile.com
+    ui_group_api_uri: http://group-api-dev.apps.internal:8080
+    ui_user_api_uri: http://usermanager-api-dev.apps.internal:8080
+    ui_cr_action_api_uri: https://cr-action-api-v1-dev.dev.px-npe02b.cf.t-mobile.com
+    ui_action_api_uri: https://wf-action-api-dev.ext.px-npe02b.cf.t-mobile.com
+    ui_cr_search_api_uri: https://change-search-api-v1-dev.dev.px-npe02b.cf.t-mobile.com
+    ui_sr_search_api_url: http://sr-search-api-v2-dev.dev.px-npe02b.cf.t-mobile.com
+    ui_sr_action_api_url: http://sr-action-api-dev.apps.internal:8080
+    ui_scr_appsvc_url: http://scr-appsvc-dev.apps.internal:8080
+    ui_configitem_api_url : https://configitem-api-dev.apps.px-npe02b.cf.t-mobile.com
+    ui_wftaskdetail_app_wfactivitytracker: '{"endpoint": "wf-activity-tracker-app"}'
+    ui_wftaskdetail_app_itsm_documents_app: '{"endpoint": "itsm-documents-app-v1"}'
+    ui_appjs_template_uri: -${ENV_TIER_ID}.${ENV_GEO_DOMAIN}.cf.t-mobile.com
+    ui_worklogv2app_uri: https://worklog-app-v2-dev.geo-npe.cf.t-mobile.com
+    ui_wftaskdetail_app_wfaudittrail: '{"endpoint": "com-audittrail-app"}'
+  services:
+  - AppScaler
+  - AppLog
+  - appdynamics-esd

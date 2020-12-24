@@ -1,0 +1,50 @@
+network-policies:
+  outbound:
+    - name: wf-search-api
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_TIER_ID}
+    - name: wf-action-api
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_TIER_ID}
+    - name: group-api
+      port: 8080
+      org: ESD-Platform
+      space: ${ENV_TIER_ID}
+    - name: cr-search-api
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_TIER_ID}
+    - name: cr-action-api
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_TIER_ID}
+    - name: sraction-api
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_TIER_ID}
+    - name: sr-action-api${ENV_LEGACY_TIER_SUFFIX_ID}
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_LEGACY_TIER_ID}
+    - name: sr-search-api
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_TIER_ID}
+    - name: usermanager-api
+      port: 8080
+      org: ESD-Platform
+      space: ${ENV_TIER_ID}
+    - name: configitem-api
+      port: 8080
+      org: ESD-Platform
+      space: ${ENV_TIER_ID}
+    - name: scr-appsvc${ENV_LEGACY_TIER_SUFFIX_ID}
+      port: 8080
+      org: TWS
+      space: ${ENV_LEGACY_TIER_ID}
+    - name: change-search-api-v1${ENV_LEGACY_TIER_SUFFIX_ID}
+      port: 8080
+      org: ESD-ITSM
+      space: ${ENV_LEGACY_TIER_ID}

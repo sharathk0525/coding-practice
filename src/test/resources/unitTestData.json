@@ -1,0 +1,458 @@
+[
+    {
+        "test-case-name": "Trigger Action Process",
+        "endpoint": "/v1/create-template",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "name": "",
+            "description": "test : sonar coverage",
+            "category": "BSS",
+            "owner": "testUser",
+            "isPublished": false,
+            "activeFlag": true,
+            "previousVersion": 0,
+            "createdBy": "testUser",
+            "saveAsWorkflow": false,
+            "tasks": [
+                {
+                    "id": 0,
+                    "description": "",
+                    "taskType": "Admin Task",
+                    "assignedGroup": "",
+                    "activeFlag": true,
+                    "displayOrder": 1
+                }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "owner": "testUser",
+                    "createdBy": "testUser",
+                    "latestVersion": "",
+                    "isPublished": false,
+                    "previousVersion": 0,
+                    "name": "",
+                    "description": "test : sonar coverage",
+                    "category": "BSS",
+                    "activeFlag": true
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "Trigger Action Process",
+        "endpoint": "/v1/update",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": 33619,
+            "description": "TEST APIGEE - WF Record",
+            "longDescription": "TEST APIGEE - WF Record",
+            "status": "closed",
+            "closedAt": "2020-02-06T16:28:55Z"
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "errors": [
+                        {
+                            "field": "WFID",
+                            "message": "Invalid workflow id"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "Trigger Action Process",
+        "endpoint": "/v1/create-template",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": 0,
+            "name": "TEST APIGEE",
+            "description": "TEST APIGEE",
+            "category": "BSS",
+            "owner": "PPatel52",
+            "isPublished": false,
+            "activeFlag": true,
+            "previousVersion": 0,
+            "createdBy": "PPatel52",
+            "saveAsWorkflow": false,
+            "tasks": [
+                {
+                    "id": 0,
+                    "description": "TEST APIGEE",
+                    "taskType": "Admin Task",
+                    "assignedGroup": "",
+                    "activeFlag": true,
+                    "displayOrder": 1
+                }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "name": "TEST APIGEE",
+                    "description": "TEST APIGEE",
+                    "category": "BSS",
+                    "isPublished": false,
+                    "activeFlag": true,
+                    "owner": "PPatel52",
+                    "createdBy": "PPatel52",
+                    "previousVersion": 0,
+                    "latestVersion": ""
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "update Action Process",
+        "endpoint": "/v1/update",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": 35308,
+            "description": "TEST APIGEE - WF Record update",
+            "longDescription": "TEST APIGEE - WF Record update"
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "errors": [
+                        {
+                            "field": "wfStatus",
+                            "message": "You cannot perform this operation on WF record as the record is already closed or completed"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "failed terminate test case",
+        "endpoint": "/itsm/workflow/v1/terminate",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "workflows": [
+                {
+                    "id": 331421
+                }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "0": {
+                        "inValidWFID": {
+                            "0": {
+                                "id": 331421
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "Template with name already exists. Please try a different name",
+        "endpoint": "/v1/create-template",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": 33183,
+            "name": "AAV Hot Cut",
+            "description": "TEST APIGEE",
+            "category": "BSS",
+            "owner": "PPatel52",
+            "isPublished": true,
+            "activeFlag": true,
+            "previousVersion": 870,
+            "createdBy": "PPatel52",
+            "saveAsWorkflow": false,
+            "tasks": [
+                {
+                    "id": 0,
+                    "description": "TEST APIGEE",
+                    "taskType": "Admin Task",
+                    "assignedGroup": "",
+                    "activeFlag": true,
+                    "displayOrder": 1
+                }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "errors": [
+                        {
+                            "field": "validateTemplate",
+                            "message": "Template with name already exists. Please try a different name"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "get all task close email_by passing email object payload_returns email",
+        "endpoint": "/v1/update-task",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": "WFR40113",
+            "tasks": [{
+                "id": 84622,
+                "description": "test1",
+                "taskType": "Admin Task",
+                "assignedGroup": "",
+                "displayOrder": 1,
+                "startDate": null,
+                "endDate": null,
+                "status": "Closed",
+                "assignee": null,
+                "active_flag": true,
+                "config_item": null,
+                "createdBy": "DKambar1",
+                "name": "",
+                "action_flag": 0,
+                "completedAt": "2020-09-07T11:41:16Z"
+            }, {
+                "id": 84623,
+                "description": "test2",
+                "taskType": "Admin Task",
+                "assignedGroup": "",
+                "displayOrder": 2,
+                "startDate": null,
+                "endDate": null,
+                "status": "Closed",
+                "assignee": null,
+                "active_flag": true,
+                "config_item": null,
+                "createdBy": "DKambar1",
+                "name": "",
+                "action_flag": 0,
+                "completedAt": "2020-09-07T11:41:16Z"
+            }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [{
+                "0": {
+                    "id": 84622,
+                    "workflow_id": 40113,
+                    "description": "test1",
+                    "taskType": "Admin Task",
+                    "status": "Closed",
+                    "createdBy": "DKambar1",
+                    "active_flag": true
+                },
+                "1": {
+                    "id": 84623,
+                    "workflow_id": 40113,
+                    "description": "test2",
+                    "taskType": "Admin Task",
+                    "status": "Closed",
+                    "createdBy": "DKambar1",
+                    "active_flag": true
+                }
+            }
+            ]
+        }
+    },
+    {
+        "test-case-name": "Given a workflow task with all tasks closed when perform update operation returns workflow task with status as closed",
+        "endpoint": "/v1/update-task-bulk",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "tasks": [{
+                "id": 85694,
+                "description": "TEST - WF Task",
+                "taskType": "Admin Task",
+                "status": "Closed"
+            }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [{
+                "id": 85694,
+                "description": "TEST - WF Task",
+                "taskType": "Admin Task",
+                "status": "Closed"
+            }
+            ]
+        }
+    },
+    {
+        "test-case-name": "Update task record with task note_by workflow task with note payload returns workflow tasks object_Positive",
+        "endpoint": "/v1/update-task",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": "40588",
+            "tasks": [
+                {
+                    "id": 85814,
+                    "description": "Workolog note testing",
+                    "taskType": "Admin Task",
+                    "assignedGroup": "",
+                    "displayOrder": 1,
+                    "status": "Open",
+                    "assignee": null,
+                    "active_flag": true,
+                    "config_item": null,
+                    "createdBy": "DGajjar1",
+                    "name": "",
+                    "action_flag": 0,
+                    "note": {
+                        "description": "task note description"
+                    }
+                }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "0": {
+                        "id": 85814,
+                        "workflow_id": 40588
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "Update task record with out task note_by workflow task with note payload returns workflow tasks object_Negative",
+        "endpoint": "/v1/update-task",
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": "40588",
+            "tasks": [
+                {
+                    "id": 85814,
+                    "description": "Workolog note testing",
+                    "taskType": "Admin Task",
+                    "assignedGroup": "",
+                    "displayOrder": 1,
+                    "status": "Open",
+                    "assignee": null,
+                    "active_flag": true,
+                    "config_item": null,
+                    "createdBy": "DGajjar1",
+                    "name": "",
+                    "action_flag": 0
+                }
+            ]
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [
+                {
+                    "0": {
+                        "id": 85814,
+                        "workflow_id": 40588
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "test-case-name": "get all task close or not required email_by passing email object payload_returns email",
+        "endpoint": "/v1/update",
+        "path-param": {
+            "action-name": "update"
+        },
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": 40692,
+            "description": "TEST - WF Record",
+            "longDescription": "TEST  - WF Record",
+            "status": "active"
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [{
+                "description": "TEST - WF Record",
+                "longDescription": "TEST  - WF Record",
+                "status": "active"
+            }
+            ]
+        }
+    },
+    {
+        "test-case-name": "get all task close or not required email_by passing email object payload_returns email-Active - All Task Completed",
+        "endpoint": "/v1/update",
+        "path-param": {
+            "action-name": "update"
+        },
+        "headers": {
+            "user-id": "testUser"
+        },
+        "method": "POST",
+        "payload": {
+            "id": 40796,
+            "description": "TEST - WF Record",
+            "longDescription": "Do not change the workflow status this is used for ITSMSF-1713. If you change it test case is going to fail",
+            "status": "active"
+        },
+        "input": "",
+        "status": 201,
+        "expectedResult": {
+            "data": [{
+                "description": "TEST - WF Record",
+                "longDescription": "Do not change the workflow status this is used for ITSMSF-1713. If you change it test case is going to fail",
+                "status": "Active - All Task Completed"
+            }
+            ]
+        }
+    }
+]
